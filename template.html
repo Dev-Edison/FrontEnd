@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site para apresentação dos conceitos de front-end.">
+    <meta name="author" descrition="André Luferat &lt;andre@luferat.net&gt;">
+    <meta name="keywords" description="JavaScript, HTML5, CSS3, semântica, mobile-first, responsividade, api, rest">
     <link rel="stylesheet" href="/index.css">
+    <link rel="shortcut icon" href="/img/logo.png">
     <title>FrontEnd</title>
-
 </head>
 
 <body>
@@ -14,13 +17,15 @@
     <!-- WRAP -->
     <div id="wrap">
 
-        <a href="top"></a>
+        <!-- Âncora para o topo da página → #top -->
+        <a id="top"></a>
 
         <!-- Cabeçalho -->
-        <header style="background-color: rgb(255, 255, 255);">
-            <a href="/">
-                <img src="/img/logo.png" alt="Logotipo de FrontEnd.">
-            </a>
+        <header>
+            <!-- Usando uma imagem como logotipo. -->
+            <!-- <a href="/"><img src="/img/logo.alfa.png" alt="Logotipo de FrontEnd."></a> -->
+            <!-- Usando Font Awesome como logotipo. -->
+            <a href="/"><img src="/img/logo.png" alt="Logotipo de FrontEnd."></a>
             <h1>
                 FrontEnd
                 <small>Programando para o futuro</small>
@@ -28,11 +33,18 @@
         </header>
 
         <!-- Menu -->
-        <nav style="background-color: rgb(229, 233, 12);">
+        <nav>
+            <!-- Item de menu -->
             <a href="/">
+
+                <!-- Ícone do item do menu -->
                 <i class="fa-solid fa-house fa-fw"></i>
+
+                <!-- Label do item do menu -->
                 <span>Início</span>
             </a>
+
+            <!-- Os outros itens seguem o mesmo padrão acima -->
             <a href="/contacts">
                 <i class="fa-solid fa-headset fa-fw"></i>
                 <span>Contatos</span>
@@ -40,9 +52,7 @@
             <a href="/about">
                 <i class="fa-solid fa-circle-info fa-fw"></i>
                 <span>Sobre</span>
-
             </a>
-
         </nav>
 
         <!-- Conteúdo principal -->
@@ -58,7 +68,8 @@
                     unde labore, nihil amet aperiam distinctio consectetur fuga numquam explicabo porro. At tenetur aut
                     molestias deleniti sequi.</p>
             </article>
-            <!-- Conteúdo adicional -->
+
+            <!-- Conteúdo adicional / Barra lateral -->
             <aside>
                 <h3>Lateral</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum, saepe.</p>
@@ -69,18 +80,18 @@
         <!-- Rodapé -->
         <footer>
 
-            <!-- Primeira linha -->
+            <!-- Primeira linha do rodapé -->
             <div class="footer-top">
                 <a href="/">
                     <i class="fa-solid fa-house fa-fw"></i>
                 </a>
-                <div>&copy; 2023 Edison Marcos</div>
+                <div>&copy; 2023 Edison</div>
                 <a href="#top">
                     <i class="fa-solid fa-circle-up fa-fw"></i>
                 </a>
             </div>
 
-            <!-- Segunda linha -->
+            <!-- Segunda linha do rodapé -->
             <div class="footer-bottom">
 
                 <div class="footer-bottom-left">
@@ -138,6 +149,7 @@
     </div>
     <!-- Fim do WRAP -->
 
+    <!-- Carga do JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="/index.js"></script>
 
