@@ -31,7 +31,7 @@ a {
 }
 
 a:hover {
-    color: orangered;
+    color: red;
     text-decoration: underline;
 }
 
@@ -45,9 +45,9 @@ body {
     /* Fundo */
     /* background-attachment: fixed; */
 
-    background-color: rgb(24, 24, 26);
-    background-attachment: rgb(20, 20, 24);
-    background-image: url('/img/background01.jpg');
+    background-color: rgb(16, 16, 17);
+    background-attachment: rgb(8, 8, 8);
+    background-image: url('/img/newbackground.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -60,13 +60,14 @@ body {
 #wrap {
     position: relative;
 
-    background-color: rgb(8, 8, 8);
+    background-color: rgba(5, 5, 5, 0.267);
     height: 100%;
     width: 100%;
     max-width: 1024px;
     margin: auto;
     display: flex;
-flex-direction: column;}
+    flex-direction: column;
+}
 
 /* Renderiza cabeçalho. */
 #wrap>header {
@@ -99,7 +100,6 @@ flex-direction: column;}
     text-align: center;
     letter-spacing: .25rem;
     color: black
-    
 }
 
 #wrap>header h1 small {
@@ -114,7 +114,7 @@ flex-direction: column;}
     background-color: black;
     border: 1px dotted grey(24, 24, 24);
     border-radius: .35rem;
-    margin: 0.5rem .5rem .5rem;
+    margin: 0 .5rem .5rem .5rem;
     display: flex;
     justify-content: flex-end;
 }
@@ -159,6 +159,7 @@ flex-direction: column;}
     border-radius: .35rem;
     border: 1px dotted grey;
     flex-grow: 1;
+    padding: 0 1rem;
 }
 
 #wrap>main>aside {
@@ -177,6 +178,7 @@ flex-direction: column;}
     border: 1px dotted black(0, 0, 0);
 
 }
+
 .footer-top {
     display: flex;
     justify-content: space-between;
@@ -184,10 +186,12 @@ flex-direction: column;}
     border-bottom: 1px dotted grey;
 
 }
+
 .footer-top div {
     color: orange;
     text-align: center;
 }
+
 .footer-top a {
     color: orange;
     font-size: 1.5rem;
@@ -201,15 +205,18 @@ flex-direction: column;}
     color: rgb(218, 151, 28);
     justify-content: space-around;
 }
-   .footer-bottom h4 {
-        margin: .5rem 0;}
-    
+
+.footer-bottom h4 {
+    margin: .5rem 0;
+}
+
 
 .footer-bottom ul {
     list-style: none;
-    padding: 0 ;
+    padding: 0;
     line-height: 1.5;
 }
+
 .footer-bottom a {
     color: orange;
     text-decoration: none;
@@ -217,7 +224,7 @@ flex-direction: column;}
 }
 
 .footer-bottom a:hover {
-    color: #92929292;
+    color: #af333392;
     text-decoration: none;
 }
 
@@ -225,50 +232,48 @@ flex-direction: column;}
 .nbsp {
     height: .1px;
     margin: 0;
-    border: .25rem  solid transparent;
+    border: .25rem solid transparent;
 }
 
 /***********************/
 /* Em larguras maiores */
 @media screen and (min-width: 480px) {
+    #wrap>nav {
+        justify-content: space-around;
+    }
 
+    #wrap>nav a:first-child {
+        margin-right: 0;
+    }
+
+    #wrap>nav a {
+        flex-direction: row;
+    }
+
+    #wrap>nav a i {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        margin-right: .5rem;
+    }
 }
 
-#wrap>nav {
-    
-    justify-content: space-between;
-}
 
-#wrap>nav a:first-child {
-    margin-right: 0;
-}
-
-
-#wrap>nav a {
-flex-direction: row;}
-
-
-#wrap>nav a i {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-    margin-right: .5rem;
-}
 
 @media screen and (min-width: 768px) {
 
     #wrap>main {
         flex-direction: row;
     }
-    
-      
+
+
     #wrap>main>aside {
-       margin-top: 0;
+        margin-top: 0;
         margin-left: .5rem;
         margin-right: .13rem;
-        min-width: 220px; 
+        min-width: 220px;
         max-width: 220px;
     }
-    
+
 }
 
 #gadgets {
@@ -291,4 +296,7 @@ flex-direction: row;}
 #gadgets a {
     color: white;
     font-size: 2rem;
+}
+#gadgets a:hover {
+    color: rgba(5, 5, 5, 0.856);
 }
