@@ -1,1 +1,7 @@
-console.log('home funciona!')
+$(document).ready(myContacts)
+
+function myContacts() {
+
+    changeTitle('Faça Contato')
+
+}

@@ -8,6 +8,10 @@
     <meta name="author" descrition="André Luferat &lt;andre@luferat.net&gt;">
     <meta name="keywords" description="JavaScript, HTML5, CSS3, semântica, mobile-first, responsividade, api, rest">
     <link rel="stylesheet" href="/index.css">
+
+    <!-- Carrega o css especifico de cada página -->
+    <link rel="stylesheet" href="" id="pagecss">
+
     <link rel="shortcut icon" href="/img/logo.png">
     <title>FrontEnd</title>
 </head>
@@ -25,8 +29,8 @@
             <!-- Usando uma imagem como logotipo. -->
             <!-- <a href="/"><img src="/img/logo.alfa.png" alt="Logotipo de FrontEnd."></a> -->
             <!-- Usando Font Awesome como logotipo. -->
-            <a href="/"><i class="fa-solid fa-laptop-code fa-fw"></i></a>
-            <h1>
+            <a href="home"><i class="fa-solid fa-laptop-code fa-fw"></i></a>
+            <h1 id="h1">
                 FrontEnd
                 <small>Programando para o futuro</small>
             </h1>
@@ -35,7 +39,7 @@
         <!-- Menu -->
         <nav>
             <!-- Item de menu -->
-            <a href="/">
+            <a href="home">
 
                 <!-- Ícone do item do menu -->
                 <i class="fa-solid fa-house fa-fw"></i>
@@ -45,16 +49,16 @@
             </a>
 
             <!-- Os outros itens seguem o mesmo padrão acima -->
-            <a href="/contacts">
+            <a href="contacts">
                 <i class="fa-solid fa-headset fa-fw"></i>
                 <span>Contatos</span>
             </a>
-            <a href="/about">
+            <a href="about">
                 <i class="fa-solid fa-circle-info fa-fw"></i>
                 <span>Sobre</span>
             </a>
 
-            <a href="/profile">
+            <a href="profile">
                 <i class="fa-solid fa-user fa-fw"></i>
                 <span>Login</span>
             </a>
@@ -107,19 +111,19 @@
                     <h4>Links rápidos:</h4>
                     <ul>
                         <li>
-                            <a href="/about">
+                            <a href="about">
                                 <i class="fa-solid fa-file-code fa-fw"></i>
                                 <span>Sobre o site</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/about">
+                            <a href="about">
                                 <i class="fa-solid fa-laptop-code fa-fw"></i>
                                 <span>Quem somos</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/about">
+                            <a href="about">
                                 <i class="fa-solid fa-user-lock fa-fw"></i>
                                 <span>Privacidade</span>
                             </a>

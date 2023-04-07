@@ -284,6 +284,7 @@ body {
     top: 200px;
     border-radius: .35rem 0 0 .35rem;
     padding: .25rem;
+    display: none;
 }
 
 #gadgets ul {
@@ -297,6 +298,7 @@ body {
     color: white;
     font-size: 2rem;
 }
+
 #gadgets a:hover {
     color: rgba(5, 5, 5, 0.856);
 }
