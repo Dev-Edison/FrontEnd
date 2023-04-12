@@ -1,5 +1,4 @@
 
-
 /**
  * 
  * JavaScript do aplicativo.
@@ -22,10 +21,9 @@
  * Algumas configurações do aplicativo.
  * Dica: você pode acrescentar novas configurações aqui se precisar.
  **/
-var app = {
-    siteName: 'FrontEnd',
-    siteSlogan: 'Programando para o futuro',
-    siteLicense: '&copy; 2023 Edison Marcos'
+ var app = { siteName: 'FrontEnd',
+  siteSlogan: 'Programando para o futuro',
+   siteLicense: '&copy; 2023 Edison Marcos' 
 }
 
 /**
@@ -56,16 +54,23 @@ function myApp() {
     /**
      * IMPORTANTE!
      * Para que o roteamento funcione corretamente no "live server", é 
-     * necessário que erros 404 abram a página "index.html".
+     * necessário que erros 404 abram a página "404.html".
      **/
 
-    // Extrai a rota da página da URL e armazena em 'path'.
-    var path = window.location.pathname.split('/')[1]
+    // Verifica se o 'localStorage' contém uma rota.
+    if (localStorage.path == undefined) {
 
-    // Se 'path' é vazia, 'path' é a página inicial.
-    if (path == '') path = 'home'
+        // Se não contém, aponta a rota 'home'.
+        localStorage.path = 'home'
+    }
 
-    // Carrega a página solicitada pela rota em 'path'.
+    // Armazena a rota obtida em 'path'.        
+    var path = localStorage.path
+
+    // Apaga o 'localStorage', liberando o recurso.
+    delete localStorage.path
+
+    // Carrega a página solicitada pela rota.
     loadpage(path)
 
     /**
@@ -110,6 +115,8 @@ function routerLink() {
     if (
         href.substring(0, 7) == 'http://' ||
         href.substring(0, 8) == 'https://' ||
+        href.substring(0, 4) == 'tel:' ||
+        href.substring(0, 7) == 'mailto:' ||
         href.substring(0, 1) == '#'
     )
         // Devolve o controle para o HTML.
@@ -231,8 +238,7 @@ function loadpage(page, updateURL = true) {
      * Referências:
      *  • https://developer.mozilla.org/en-US/docs/Web/API/History/pushState
      **/
-    if (updateURL)
-        window.history.pushState({}, '', page);
+    if (updateURL) window.history.pushState({}, '', page);
 
 }
 
