@@ -1,4 +1,5 @@
 
+
 /**
  * 
  * JavaScript do aplicativo.
@@ -26,6 +27,7 @@ var app = {
     siteSlogan: 'Programando para o futuro',
     siteLicense: '&copy; 2023 Edison Marcos'
 }
+
 /**
  * jQuery → Quando o documento estiver pronto, executa a função principal,
  * 'runApp()'.
@@ -52,26 +54,19 @@ $(document).ready(myApp)
 function myApp() {
 
     /**
-     * Faz a carga da página inicial do SPA. A página a ser carregada na 
-     * inicialização é definida pela string parâmetro e corresponde a uma
-     * das subpastas de "/pages".
-     * 
-     * Posteriormente, esta chamada à "loadpage()" será otimizada para melhorar
-     * o paradigma "SEO Friendly" do aplicativo.
+     * IMPORTANTE!
+     * Para que o roteamento funcione corretamente no "live server", é 
+     * necessário que erros 404 abram a página "index.html".
      **/
-    // loadpage('home')
 
-    /**
-      * Obtém nome da página que está sendo acessada, do 'localStorage'.
-      * Estude '/404.html' para mais detalhes.
-      **/
-    const path = localStorage.path
-    if (path) {                        // Se cliente está acessando uma página específica...
-        delete localStorage.path       // Limpa o 'localStorage'.
-        loadpage(path);                // Acessa a página solicitada.
-    } else {                           // Se não solicitou uma página específica...
-        loadpage('home');              // Carrega a página inicial.
-    }
+    // Extrai a rota da página da URL e armazena em 'path'.
+    var path = window.location.pathname.split('/')[1]
+
+    // Se 'path' é vazia, 'path' é a página inicial.
+    if (path == '') path = 'home'
+
+    // Carrega a página solicitada pela rota em 'path'.
+    loadpage(path)
 
     /**
      * jQuery → Monitora cliques em elementos '<a>' que , se ocorre, chama a função 
@@ -153,7 +148,7 @@ function routerLink() {
  *  5. Já para carregar esta página no SPA pelo JavaScript, comandamos 
  *     "loadpage('mypage')", por exemplo.
  **/
-function loadpage(page) {
+function loadpage(page, updateURL = true) {
 
     /*
      * Monta os caminhos (path) para os componentes da página solicitada, 
@@ -203,43 +198,25 @@ function loadpage(page) {
          **/
         .done((data) => {
 
-            /**
-             * jQuery → Carrega o CSS da página solicitada na "index.html"
-             * principal.
-             **/
-            $('#pageCSS').attr('href', path.css)
+            // Se o documento carregado NÃO é uma página de conteúdo...
+            if (data.trim().substring(0, 9) != '<article>')
 
-            /**
-             * jQuery → Obtém os dados da requisição, no caso, o conteúdo do 
-             * componente HTML da página e o exibe no elemento SPA → <main>.
-             **/
-            $('main').html(data)
+                // Carrega a página de erro 404 sem atualizar a rota.
+                loadpage('e404', false)
 
-            /**
-             * jQuery → Obtém o código JavaScript da página, carrega na memória
-             * e "executa".
-             **/
-            $.getScript(path.js)
+            // Se o documento é uma página de conteúdo...
+            else {
 
-        })
+                // jQuery - Instala o CSS da página na 'index.html'.
+                $('#pageCSS').attr('href', path.css)
 
-        /**
-         * Caso o "request" falhe, por conta de o documento solicitado não 
-         * existir, carrega a página de erro "e404" ('/pages/e404') no SPA.
-         **/
-        .fail((error) => {
+                // jQuery - Carrega o HTML no elemento <main></main>.
+                $('main').html(data)
 
-            /**
-             * Carrega a página de erro 404 no SPA.
-             */
-            loadpage('e404')
+                // jQuery - Carrega e executa o JavaScript.
+                $.getScript(path.js)
+            }
 
-            /**
-             * Exibe a mensagem de erro que ocorreu no console, para depuração.
-             * Opcionalmente, esta linha poderá/deverá ser removida no momento
-             * do deploy (publicação) da versão final.
-             */
-            console.error(error)
         })
 
     /**
@@ -254,7 +231,8 @@ function loadpage(page) {
      * Referências:
      *  • https://developer.mozilla.org/en-US/docs/Web/API/History/pushState
      **/
-    window.history.pushState({}, '', page);
+    if (updateURL)
+        window.history.pushState({}, '', page);
 
 }
 
