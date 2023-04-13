@@ -25,7 +25,15 @@ function sendContact(ev) {
 
     $.post('http://localhost:3000/contacts', formJSON)
     .done((data) => {
-        console.log(data.status)
+        if(data.status == 'success') {
+            var firstName = formJSON.name.split(' ')[0]
+            var feedback = `
+                <h3>Olá ${firstName}!</h3>
+                <p>Seu contato foi enviado com sucesso.</p>
+                <p>Obrigado...</p>
+            `
+            $('#cForm').html(feedback)
+        }
     })
 
     return false
