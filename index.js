@@ -24,9 +24,9 @@
  var app = { siteName: 'FrontEnd',
   siteSlogan: 'Programando para o futuro',
    siteLicense: '&copy; 2023 Edison Marcos',
-   apiContactsPOSTURL: 'http://localhost:3000/contacts'
+   apiContactsURL: 'http://localhost:3000/contacts'
 }
-
+ 
 /**
  * jQuery → Quando o documento estiver pronto, executa a função principal,
  * 'runApp()'.
