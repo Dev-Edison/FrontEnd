@@ -64,4 +64,5 @@ function loadArticle() {
 
     // Carrega a página que exibe artigos → view.
     loadpage('view')
+
 }
