@@ -55,6 +55,10 @@
       "type": "user",
       "status": "on",
       "id": 3
+    },
+    {
+      "nome": "Jocasta",
+      "email": "joca@casta.com"
     }
   ],
   "articles": [
@@ -70,7 +74,7 @@
       "id": 1
     },
     {
-      "author": 2,
+      "author": 1,
       "date": "2023-04-17 20:45:00",
       "title": "Gatos que latem e cães que miam",
       "thumbnail": "https://picsum.photos/201",
@@ -81,7 +85,7 @@
       "id": 2
     },
     {
-      "author": 3,
+      "author": 1,
       "date": "2023-04-18 18:11:00",
       "title": "Mais um artigo informativo",
       "thumbnail": "https://picsum.photos/202",

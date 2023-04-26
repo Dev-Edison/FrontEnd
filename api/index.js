@@ -1,6 +1,6 @@
 /**
  * JSON-Server Fake API
- * By Luferat
+ * By Edison
  * MIT License
  * 
  * ATENÇÃO! Lembre-se que este aplicativo será substituído pela nossa própria
