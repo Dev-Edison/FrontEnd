@@ -177,6 +177,8 @@ body {
     border-radius: .35rem;
     border: 1px dotted black(0, 0, 0);
 
+   
+
 }
 
 .footer-top {
@@ -257,6 +259,14 @@ body {
     }
 }
 
+#wrap>nav a img {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: .4rem;
+    border-radius: 50%;
+}
+
 
 
 @media screen and (min-width: 768px) {
@@ -272,6 +282,13 @@ body {
         margin-right: .13rem;
         min-width: 220px;
         max-width: 220px;
+    }
+
+    #wrap>nav a img {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-bottom: 0;
+        margin-right: .5rem;
     }
 
 }
