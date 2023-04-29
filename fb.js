@@ -14,64 +14,11 @@ const firebaseConfig = {
     appId: "1:807425652691:web:90cbbee0a6a56d8a006126"
 };
 
-// Importa o "core" do Firebase.
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+// Incializa o Firebase
+firebase.initializeApp(firebaseConfig);
 
-// Importa o Authentication do Firebase.
-import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+// Incializa o Firebase Authentication
+const auth = firebase.auth();
 
-// Initializa o Firebase.
-const fbapp = initializeApp(firebaseConfig);
-
-// Especifica o provedor de autenticação.
-const provider = new GoogleAuthProvider();
-
-// Inicializa o mecanismo de autenticação.
-const auth = getAuth();
-
-//signInWithPopup(auth, provider)
-
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        sessionStorage.userData = JSON.stringify({
-            name: user.displayName,
-            email: user.email,
-            photo: user.photoURL,
-            uid: user.uid
-        })
-    } else {
-        delete sessionStorage.userData
-    }
-});
-
-$(document).ready(myFirebase)
-
-
-function myFirebase() {
-
-    // Detecta cliques no botão de login.
-    $('#navUser').click(login)
-}
-// Função que processa cliques no botão login/profile.
-
-function login() {
-
-        // Se não está logado...
-    if (!sessionStorage.userData) {
-
-        // Faz login usando popup.
-        signInWithPopup(auth, provider)
-            .then(() => {
-
-                // Redireciona para a 'home'.
-                location.href = '/home'
-            })
-    } else
-
-        // Redireciona para 'profile'.
-
-        location.href = '/profile'
-
-        return false
-}
+// Define o provedor de autenticação
+var provider = new firebase.auth.GoogleAuthProvider();
