@@ -113,6 +113,7 @@
       "date": "2023-04-17 20:47:00",
       "article": 1,
       "content": "Comentando comentários comentáveis",
+      "photo": "https://randomuser.me/api/portraits/women/23.jpg",
       "status": "on",
       "id": 1
     },
@@ -121,6 +122,7 @@
       "date": "2023-04-17 20:49:00",
       "article": 1,
       "content": "Não é possível que este comentário esteja comentando.",
+      "photo": "https://randomuser.me/api/portraits/men/3.jpg",
       "status": "on",
       "id": 2
     }

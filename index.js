@@ -27,13 +27,15 @@
  **/
  var apiBaseURL = 'http://localhost:3000/'
  var app = {
-     siteName: 'FrontEndeiros',
-     siteSlogan: 'Programando para o futuro',
-     apiContactsURL: apiBaseURL + 'contacts',
-     apiArticlesURL: apiBaseURL + 'articles?_sort=date&_order=desc',
-     apiArticleURL: apiBaseURL + 'articles/',
-     apiUserURL: apiBaseURL + 'users/'
- }
+    siteName: 'FrontEndeiros',
+    siteSlogan: 'Programando para o futuro',
+    apiContactsURL: apiBaseURL + 'contacts',
+    apiArticlesURL: apiBaseURL + 'articles?_sort=date&_order=desc&status=on',
+    apiArticleURL: apiBaseURL + 'articles/',
+    apiUserURL: apiBaseURL + 'users/',
+    apiCommentURL: apiBaseURL + 'comments?_sort=date&_order=desc&status=on'
+}
+
  
  /**
   * jQuery → Quando o documento estiver pronto, executa a função principal,
