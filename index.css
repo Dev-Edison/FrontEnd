@@ -237,9 +237,30 @@ body {
     border: .25rem solid transparent;
 }
 
-/***********************/
-/* Em larguras maiores */
 @media screen and (min-width: 480px) {
+
+    /*********************/
+    /* Cabeçalho do tema */
+    /*********************/
+
+    #wrap>header a {
+        font-size: 4rem;
+    }
+
+    #wrap>header h1 {
+        font-size: 2rem;
+        letter-spacing: .1rem;        
+    }
+
+    #wrap>header h1 small {
+        font-size: 1rem;
+        letter-spacing: .06rem;
+    }
+
+    /**************************/
+    /* Menu principal do tema */
+    /**************************/
+
     #wrap>nav {
         justify-content: space-around;
     }
@@ -257,32 +278,6 @@ body {
         margin-bottom: 0;
         margin-right: .5rem;
     }
-}
-
-#wrap>nav a img {
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    margin-bottom: .4rem;
-    border-radius: 50%;
-}
-
-
-
-@media screen and (min-width: 768px) {
-
-    #wrap>main {
-        flex-direction: row;
-    }
-
-
-    #wrap>main>aside {
-        margin-top: 0;
-        margin-left: .5rem;
-        margin-right: .13rem;
-        min-width: 220px;
-        max-width: 220px;
-    }
 
     #wrap>nav a img {
         width: 1.2rem;
@@ -291,31 +286,35 @@ body {
         margin-right: .5rem;
     }
 
+    /******************/
+    /* Rodapé do tema */
+    /******************/
+
+    .footer-bottom ul {
+        padding-left: 1rem;
+    }
+
 }
 
-#gadgets {
-    background-color: lightslategrey;
-    position: fixed;
-    z-index: 100;
-    right: 0;
-    top: 200px;
-    border-radius: .35rem 0 0 .35rem;
-    padding: .25rem;
-    display: none;
-}
+/**************************************************/
+/* Responsividade → Em larguras maiores que 768px */
+/**************************************************/
 
-#gadgets ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
+@media screen and (min-width: 768px) {
 
+    /************/
+    /* Conteúdo */
+    /************/
 
-#gadgets a {
-    color: white;
-    font-size: 2rem;
-}
+    #wrap>main {
+        flex-direction: row;
+    }
 
-#gadgets a:hover {
-    color: rgba(5, 5, 5, 0.856);
+    #wrap>main>aside {
+        margin-left: .5rem;
+        margin-top: 0;
+        max-width: 220px;
+        min-width: 220px;
+    }
+
 }
