@@ -24,6 +24,7 @@ function myView() {
 <h2>${art.title}</h2>
 <small id="dateAuthor" class="dateAuthor"></small>
 <div>${art.content}</div>
+&nbsp;<hr class="sep">
 <h3 class="comt-title">Comentários</h3>
 <div id="commentForm"></div>
 <div id="commentList"></div>   
@@ -37,6 +38,22 @@ function myView() {
 
             // Altera o título da página.
             changeTitle(art.title)
+
+            // Atualiza o contador de views deste artigo.
+            var view = {
+                views: parseInt(art.views) + 1
+            }
+
+            // Grava o novo contador no artigo.
+            var sData = {
+                type: 'PATCH',
+                url: app.apiArticleURL + artId,
+                data: view,
+                success: (d)=>{ console.log(d)},
+                error: (e) => { console.log(e)}
+            }
+            console.log(sData)
+            $.ajax(sData);
 
             // Obter dados do autor.
             $.get(app.apiUserURL + art.author)
@@ -68,7 +85,7 @@ function myView() {
                             `
                             uArt.forEach((data) => {
                                 if (data.id != art.id) {
-                                    authorArts += `<li><a href="view" data-id="${data.id}">${data.title}</a></li>`
+                                    authorArts += `<li class="art-item" data-id="${data.id}">${data.title}</li>`
                                 }
                             });
                             authorArts += `</ul>`
@@ -96,13 +113,25 @@ function myView() {
 
 }
 
+/**
+ * Envia comentário.
+ **/
 function sendComment(event) {
 
     // Evita ação normal do HTML. Não envia o formulário.
     event.preventDefault()
 
-    // Obter o comentário do formulário.
-    var content = $('#txtContent').val().trim()
+    // Obtém o comentário do formulário, sanitizando o conteúdo.
+    var content = stripHtml($('#txtContent').val().trim())
+
+    // Escreveo conteúdo sanitizado no campo.
+    $('#txtContent').val(content)
+
+    // Se o conteúdo é vazio, não faz nada.
+    if (content == '') {
+        // alert('Seu comentário está vazio!')
+        return false
+    }
 
     // Obtém a data atual do sistema.
     const today = new Date()
@@ -125,7 +154,7 @@ function sendComment(event) {
     // Envia dados para a API.
     $.post(app.apiCommentPostURL, formData)
         .done((data) => {
-            if(data.id > 0) {
+            if (data.id > 0) {
                 alert('Seu comentário foi enviado com sucesso!')
                 loadpage('view')
             }
@@ -135,6 +164,9 @@ function sendComment(event) {
         })
 }
 
+/**
+ * Exibe formulário de comentário se usuário está logado.
+ **/
 function getCommentForm() {
 
     // Monitora status de autenticação do usuário
@@ -171,31 +203,38 @@ function getCommentForm() {
 
 }
 
+/**
+ * Obtém todos os comentários deste artigo.
+ **/
 function getComments(artId) {
 
     // Obtém todos os comentários deste artigo
     $.get(app.apiCommentURL + '&article=' + artId)
         .done((cmts) => {
 
-if(cmts.length > 0){
+            // Se tem comentários.
+            if (cmts.length > 0) {
 
-            cmts.forEach((cmt) => {
+                cmts.forEach((cmt) => {
 
-                // Obtém e formata a data do artigo.
-                var parts = cmt.date.split(' ')[0].split('-')
-                var date = `${parts[2]}/${parts[1]}/${parts[0]} às ${cmt.date.split(' ')[1]}`
+                    // Obtém e formata a data do artigo.
+                    var parts = cmt.date.split(' ')[0].split('-')
+                    var date = `${parts[2]}/${parts[1]}/${parts[0]} às ${cmt.date.split(' ')[1]}`
 
-                cmtList += `
+                    // Substitui quebras de linha (\n) pela tag <br> no conteúdo.
+                    var content = cmt.content.split("\n").join("<br>")
+
+                    cmtList += `
 <div class="cmt-item">
     <small class="dateAuthor"><span>Por ${cmt.name}&nbsp;</span><span>em ${date}</span></small>
-    <div class="cmtContent">${cmt.content}</div>
+    <div class="cmtContent">${content}</div>
 </div>
-                `
-            })
+                    `
+                })
 
-        } else {
-            cmtList = `<p class="center">Nenhum comentário.<br>Seja a(o) primeira(o) a comentar!</p>`
-        }
+            } else {
+                cmtList = `<p class="center">Nenhum comentário.<br>Seja a(o) primeira(o) a comentar!</p>`
+            }
 
             $('#commentList').html(cmtList)
             cmtList = ''
@@ -203,4 +242,3 @@ if(cmts.length > 0){
         .fail()
 
 }
-

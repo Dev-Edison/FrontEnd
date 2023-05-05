@@ -109,22 +109,15 @@
   ],
   "comments": [
     {
-      "author": "2",
-      "date": "2023-04-17 20:47:00",
-      "article": 1,
-      "content": "Comentando comentários comentáveis",
-      "photo": "https://randomuser.me/api/portraits/women/23.jpg",
+      "name": "Edison Marcos",
+      "photo": "https://lh3.googleusercontent.com/a/AGNmyxaUveFYSPNwR8hdFP-EK87ekfCC7Exe51hdz4QA=s96-c",
+      "email": "dev3dison@gmail.com",
+      "uid": "VqihYvM4LudS1EokcxOAzBuroXy2",
+      "article": "4",
+      "content": "Comentário fake para testes",
+      "date": "2023-05-04 23:38:19",
       "status": "on",
       "id": 1
-    },
-    {
-      "author": "1",
-      "date": "2023-04-17 20:49:00",
-      "article": 1,
-      "content": "Não é possível que este comentário esteja comentando.",
-      "photo": "https://randomuser.me/api/portraits/men/3.jpg",
-      "status": "on",
-      "id": 2
     }
   ]
 }
