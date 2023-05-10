@@ -80,7 +80,7 @@
       "thumbnail": "https://picsum.photos/201",
       "resume": "Desde que se sabe, é assim que é, para sempre ser.",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus justo nibh, sed rutrum neque feugiat ac.",
-      "views": 0,
+      "views": "1",
       "status": "on",
       "id": 2
     },
@@ -102,7 +102,7 @@
       "thumbnail": "https://picsum.photos/199",
       "resume": "conheça o produto mais produzido na produção produtiva",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus justo nibh, sed rutrum neque feugiat ac.",
-      "views": 0,
+      "views": "1",
       "status": "on",
       "id": 4
     }
