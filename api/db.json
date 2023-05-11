@@ -17,6 +17,15 @@
       "date": "2023-04-18 21:06:00",
       "status": "received",
       "id": 2
+    },
+    {
+      "name": "gsgsfag",
+      "email": "sgsdfg@sgfsg",
+      "subject": "saffsdaf",
+      "message": "dsafsdafdsaf",
+      "date": "2023-05-10 22:03:54",
+      "status": "received",
+      "id": 3
     }
   ],
   "users": [
@@ -69,7 +78,7 @@
       "thumbnail": "https://picsum.photos/200",
       "resume": "Aprenda a fazer alguma coisa que deve ser feita por quem sabe.",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus justo nibh, sed rutrum neque feugiat ac.",
-      "views": 0,
+      "views": "5",
       "status": "on",
       "id": 1
     },
@@ -80,7 +89,7 @@
       "thumbnail": "https://picsum.photos/201",
       "resume": "Desde que se sabe, é assim que é, para sempre ser.",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus justo nibh, sed rutrum neque feugiat ac.",
-      "views": "1",
+      "views": "2",
       "status": "on",
       "id": 2
     },
@@ -91,7 +100,7 @@
       "thumbnail": "https://picsum.photos/202",
       "resume": "Esse artigo ensina como fazer um artigo que ensina alguma coisa.",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus justo nibh, sed rutrum neque feugiat ac.",
-      "views": 0,
+      "views": "3",
       "status": "on",
       "id": 3
     },
@@ -102,7 +111,7 @@
       "thumbnail": "https://picsum.photos/199",
       "resume": "conheça o produto mais produzido na produção produtiva",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean faucibus justo nibh, sed rutrum neque feugiat ac.",
-      "views": "1",
+      "views": "11",
       "status": "on",
       "id": 4
     }
@@ -118,6 +127,17 @@
       "date": "2023-05-04 23:38:19",
       "status": "on",
       "id": 1
+    },
+    {
+      "name": "Edison Marcos",
+      "photo": "https://lh3.googleusercontent.com/a/AGNmyxaUveFYSPNwR8hdFP-EK87ekfCC7Exe51hdz4QA=s96-c",
+      "email": "dev3dison@gmail.com",
+      "uid": "VqihYvM4LudS1EokcxOAzBuroXy2",
+      "article": "4",
+      "content": "sadf sdaf sdaf sdaf sdaf sdafsd",
+      "date": "2023-05-10 22:04:20",
+      "status": "on",
+      "id": 2
     }
   ]
 }

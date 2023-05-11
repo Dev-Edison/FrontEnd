@@ -1,7 +1,7 @@
 $(document).ready(myAbout)
 
 function myAbout() {
-
-    changeTitle('Sobre...')
-
+    changeTitle(`Sobre o ${app.siteName}`)
+    $('#siteName').html(app.siteName)
+    getUsersTeam()
 }

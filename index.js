@@ -25,7 +25,7 @@
  * Algumas configurações do aplicativo.
  * Dica: você pode acrescentar novas configurações aqui se precisar.
  **/
-const app = {
+ const app = {
     siteName: 'FrontEndeiros',
     siteSlogan: 'Programando para o futuro',
     apiBaseURL: 'http://localhost:3000/'
@@ -55,6 +55,12 @@ $(document).ready(myApp)
  *  • https://www.w3schools.com/js/js_functions.asp
  **/
 function myApp() {
+
+    onstorage = popUpOpen
+
+    // Aviso de cookies → Exibir aviso.
+    if (cookie.get('acceptCookies') == 'on') $('#aboutCookies').hide()
+    else $('#aboutCookies').show()
 
     // Monitora status de autenticação do usuário
     firebase.auth().onAuthStateChanged((user) => {
@@ -106,17 +112,38 @@ function myApp() {
     /**
      * Quando clicar em um artigo.
      **/
-    $(document).on('click', '.art-item', loadArticle)
+    $(document).on('click', '.article', loadArticle)
+
+    /**
+     * Aviso de cookies → Políticas de privacidade.
+     **/
+    $('#policies').click(() => {
+        loadpage('policies')
+    })
+
+    /**
+     * Aviso de cookies → Aceito.
+     **/
+    $('#accept').click(() => {
+        cookie.set('acceptCookies', 'on', 365)
+        $('#aboutCookies').hide()
+    })
 
 }
 
 // Faz login do usuário usando o Firebase Authentication
 function fbLogin() {
     firebase.auth().signInWithPopup(provider)
-        .then(() => {
-
-            // Recarrega a página atual após o login.
+        .then((user) => {
+            popUp({ type: 'success', text: `Olá ${user.user.displayName}!` })
             loadpage(location.pathname.split('/')[1])
+        })
+        .catch((error) => {
+            try {
+                popUp({ type: 'error', text: 'Ooops! Popups estão bloqueados!<br>Por favor, libere-os!' })
+            } catch (e) {
+                alert('Ooops! Popups estão bloqueados!\nPor favor, libere-os!')
+            }
         })
 }
 
@@ -229,7 +256,6 @@ function loadpage(page, updateURL = true) {
         js: `pages/${page}/index.js`
     }
 
-    console.log(path)
     /**
      * jQuery → Faz a requisição (request) do componente HTML da página, a ser 
      * inserido no SPA.
@@ -311,28 +337,10 @@ function loadpage(page, updateURL = true) {
  * 
  **/
 function changeTitle(title = '') {
-
-    /**
-     * Define o título padrão da página.
-     */
     let pageTitle = app.siteName + ' - '
-
-    /**
-     * Se não foi definido um título para a página, 
-     * usa o slogan.
-     **/
     if (title == '') pageTitle += app.siteSlogan
-
-    /**
-     * Se foi definido um título, usa-o.
-     */
     else pageTitle += title
-
-    /**
-     * Escreve o novo título na tag <title></title>.
-     */
     $('title').html(pageTitle)
-
 }
 
 /**
@@ -345,7 +353,7 @@ function getAge(sysDate) {
     const tMonth = today.getMonth() + 1
     const tDay = today.getDate()
 
-    // Obtebdo partes da data original.
+    // Obtendo partes da data original.
     const parts = sysDate.split('-')
     const pYear = parts[0]
     const pMonth = parts[1]
@@ -355,8 +363,7 @@ function getAge(sysDate) {
     var age = tYear - pYear
 
     // Verificar o mês e o dia.
-    if (pMonth > tMonth) age--
-    else if (pMonth == tMonth && pDay > tDay) age--
+    if (pMonth > tMonth || pMonth == tMonth && pDay > tDay) age--
 
     // Retorna a idade.
     return age
@@ -364,25 +371,17 @@ function getAge(sysDate) {
 
 /**
  * Carrega o artigo completo.
- */
+ **/
 function loadArticle() {
-
-    // Obtém o id do artigo e armazena na sessão.
     sessionStorage.article = $(this).attr('data-id')
-
-    // Carrega a página que exibe artigos → view.
     loadpage('view')
 }
 
 /**
  * Sanitiza um texto, removendo todas as tags HTML.
- */
+ **/
 function stripHtml(html) {
-
-    // Armazena o texto no DOM na forma de string.
     let doc = new DOMParser().parseFromString(html, 'text/html');
-
-    // Obtém e retorna o conteúdo do DOM como texto puro.
     return doc.body.textContent || "";
 }
 
@@ -484,4 +483,48 @@ const cookie = {
         }
         return ''
     }
+}
+
+function getUsersTeam(limit) {
+    var htmlOut = ''
+    $.get(app.apiBaseURL + 'users', {
+        status: 'on',
+        _sort: 'name',
+        _order: 'asc'
+    })
+        .done((data) => {
+            data.forEach((item) => {
+                var type
+                switch (item.type) {
+                    case 'admin': type = 'Administrador(a)'; break
+                    case 'author': type = 'Autor(a)'; break
+                    case 'moderator': type = 'Moderador(a)'; break
+                    default: type = 'Colaborador(a)'
+                }
+
+                htmlOut += `
+                    <div class="userclick users-grid-item" data-id="${item.id}">
+                        <img src="${item.photo}" alt="${item.name}">
+                        <h4>${item.name.split(' ')[0]}</h4>
+                        <small>${item.name}</small>
+                        <ul>
+                            <li>${getAge(item.birth)} anos</li>
+                            <li>${type}
+                        </ul>
+                    </div>
+                `
+            })
+
+            $('#usersGrid').html(htmlOut)
+
+            $('.userclick').click(openProfile)
+
+        })
+
+}
+
+function openProfile() {
+    const userId = parseInt($(this).attr('data-id'))
+    sessionStorage.userId = userId
+    loadpage('aboutus')
 }

@@ -6,7 +6,6 @@ function myView() {
 
     if (isNaN(articleId)) loadpage('e404')
 
-
     $.get(app.apiBaseURL + 'articles', { id: articleId, status: 'on' })
         .done((data) => {
             if (data.length != 1) loadpage('e404')
