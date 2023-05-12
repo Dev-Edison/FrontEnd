@@ -28,7 +28,7 @@
  const app = {
     siteName: 'FrontEndeiros',
     siteSlogan: 'Programando para o futuro',
-    apiBaseURL: 'http://localhost:3000/'
+    apiBaseURL: 'https://frontendapi-w0yr.onrender.com/'
 }
 
 /**
@@ -523,8 +523,3 @@ function getUsersTeam(limit) {
 
 }
 
-function openProfile() {
-    const userId = parseInt($(this).attr('data-id'))
-    sessionStorage.userId = userId
-    loadpage('aboutus')
-}
