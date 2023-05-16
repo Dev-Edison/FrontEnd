@@ -26,9 +26,9 @@
  * Dica: você pode acrescentar novas configurações aqui se precisar.
  **/
  const app = {
-    siteName: 'FrontEndeiros',
+    siteName: 'FrontEnd',
     siteSlogan: 'Programando para o futuro',
-    apiBaseURL: 'https://frontendapi-w0yr.onrender.com/'
+    apiBaseURL: 'http://localhost/'
 }
 
 /**
