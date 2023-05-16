@@ -28,7 +28,7 @@
  const app = {
     siteName: 'FrontEnd',
     siteSlogan: 'Programando para o futuro',
-    apiBaseURL: 'http://localhost/'
+    apiBaseURL: 'https://frontendapi-w0yr.onrender.com/'
 }
 
 /**
